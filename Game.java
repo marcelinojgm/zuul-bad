@@ -37,13 +37,13 @@ public class Game
      
       
         // create the rooms
-        Room entrada = new Room("estas en la entrada");
-        Room pasillo = new Room("habitacion 2 segura");
-        Room almacen = new Room("estas en el almacen");
-        Room laboratorio = new Room("estas en el laboratorio");
-        Room despacho = new Room("estas en el despacho");
-        Room banio = new Room("estas en el baño");
-        Room corredor = new Room("estas en el corredor");
+        Room entrada = new Room("entrada");
+        Room pasillo = new Room("pasillo");
+        Room almacen = new Room("almacen");
+        Room laboratorio = new Room("laboratorio");
+        Room despacho = new Room("despacho");
+        Room banio = new Room("baño");
+        Room corredor = new Room("corredor");
         Room salida = new Room("salida");
         // initialise room exits
         entrada.setExits(null, pasillo, null , null);
@@ -51,8 +51,8 @@ public class Game
         almacen.setExits(banio, null, null, pasillo);
         laboratorio.setExits(banio, null, almacen, despacho);
         despacho.setExits(corredor, laboratorio, pasillo, null);
-        banio.setExits(null,null,laboratorio,corredor);
-        corredor.setExits(null,banio,despacho,salida);
+        banio.setExits(null, null, laboratorio, corredor);
+        corredor.setExits(null ,banio ,despacho ,salida);
         salida.setExits(null, corredor, null, null);
 
         currentRoom = entrada;  // start game outside
