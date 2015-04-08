@@ -48,7 +48,7 @@ public class Game
         // initialise room exits
         entrada.setExits(null, pasillo, null , null);
         pasillo.setExits(despacho, almacen, null, entrada);
-        almacen.setExits(banio, null, null, pasillo);
+        almacen.setExits(laboratorio, null, null, pasillo);
         laboratorio.setExits(banio, null, almacen, despacho);
         despacho.setExits(corredor, laboratorio, pasillo, null);
         banio.setExits(null, null, laboratorio, corredor);
