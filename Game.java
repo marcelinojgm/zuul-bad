@@ -19,7 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -34,8 +34,7 @@ public class Game
      */
     private void createRooms()
     {
-     
-      
+
         // create the rooms
         Room entrada = new Room("entrada");
         Room pasillo = new Room("pasillo");
@@ -67,7 +66,7 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -85,8 +84,8 @@ public class Game
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
-        System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
+        printLocationInfo();
+
         System.out.print("Exits: ");
         if(currentRoom.northExit != null) {
             System.out.print("north ");
@@ -181,7 +180,7 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
+            printLocationInfo();
             System.out.print("Exits: ");
             if(currentRoom.northExit != null) {
                 System.out.print("north ");
@@ -213,5 +212,11 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+
+    private void printLocationInfo(){
+
+        System.out.println("You are " + currentRoom.getDescription());
+
     }
 }
