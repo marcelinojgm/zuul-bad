@@ -45,14 +45,14 @@ public class Game
         Room corredor = new Room("corredor");
         Room salida = new Room("salida");
         // initialise room exits
-        entrada.setExits(null, pasillo, null , null);
-        pasillo.setExits(despacho, almacen, null, entrada);
-        almacen.setExits(laboratorio, null, null, pasillo);
-        laboratorio.setExits(banio, null, almacen, despacho);
-        despacho.setExits(corredor, laboratorio, pasillo, null);
-        banio.setExits(null, null, laboratorio, corredor);
-        corredor.setExits(null ,banio ,despacho ,salida);
-        salida.setExits(null, corredor, null, null);
+        entrada.setExits(null, pasillo,null, null , null);
+        pasillo.setExits(despacho, almacen,null, null, entrada);
+        almacen.setExits(laboratorio, null, null,  null, pasillo);
+        laboratorio.setExits(banio, null, null, null,  despacho);
+        despacho.setExits(corredor, laboratorio,almacen, pasillo, null);
+        banio.setExits(null, null, null,  laboratorio, corredor);
+        corredor.setExits(null ,banio , despacho, laboratorio, salida);
+        salida.setExits(null, corredor,  null, null, null);
 
         currentRoom = entrada;  // start game outside
     }
@@ -161,6 +161,9 @@ public class Game
         if(direction.equals("west")) {
             nextRoom = currentRoom.westExit;
         }
+        if(direction.equals("southeast")) {
+            nextRoom = currentRoom.southeastExit;
+        }
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -203,6 +206,9 @@ public class Game
         }
         if(currentRoom.westExit != null) {
             System.out.print("west ");
+        }
+        if(currentRoom.southeastExit != null) {
+            System.out.print("southeast ");
         }
         System.out.println();
 
