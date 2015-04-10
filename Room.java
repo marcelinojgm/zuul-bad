@@ -82,7 +82,7 @@ public class Room
             exit += " north ";
 
         if(nextRoom.containsKey("east"))
-        exit +=  " east ";
+            exit +=  " east ";
 
         if(nextRoom.containsKey("south")) 
             exit += " south ";
@@ -104,5 +104,18 @@ public class Room
     public Room getExit(String coordenada){
 
         return nextRoom.get(coordenada);
+    }
+
+    /**
+     * Define an exit from this room.
+     * @param direction The direction of the exit.
+     * @param neighbor The room in the given direction.
+     */
+    public void setExit(String direction, Room neighbor)
+    {
+        if(neighbor == null)
+        nextRoom.remove(direction) ;
+        else
+        nextRoom.put(direction, neighbor);
     }
 }
