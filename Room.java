@@ -104,9 +104,6 @@ public class Room
      */
     public void setExit(String direction, Room neighbor)
     {
-        if(neighbor == null)
-            nextRoom.remove(direction) ;
-        else
-            nextRoom.put(direction, neighbor);
+        nextRoom.put(direction, neighbor);
     }
 }
