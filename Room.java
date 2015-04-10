@@ -14,12 +14,12 @@
  */
 public class Room 
 {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
-    public Room southeastExit;
+    private String description;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
+    private Room southeastExit;
 
     /**
      * Create a room described "description". Initially, it has
@@ -71,26 +71,52 @@ public class Room
      */
     public String getLongDescription(){
         String longDescription = "You are " + getDescription()+ "/n" + "Exits: ";
-       
-        
+
         if(northExit != null) 
-           longDescription += " north ";
-        
+            longDescription += " north ";
+
         if(eastExit != null) 
             longDescription +=  " east ";
-        
+
         if(southExit != null) 
-             longDescription += " south ";
-        
+            longDescription += " south ";
+
         if(westExit != null) 
             longDescription += " west ";
-        
+
         if(southeastExit != null) 
-             longDescription += "southeast ";
-        
+            longDescription += "southeast ";
+
         longDescription += "/n";
-        
+
         return longDescription;
     }
 
+    /**
+     * retona la habitacion de salida en la coordenada indicada o null si no hay puerta en esa coordenada
+     * @param coordenada coordenada de la que se quiere saber la salida
+     * @return habitacion en la coordenada indicada o null en caso de no existir
+     */
+    public Room getExit(String coordenada){
+        Room courentRoom = null;
+        switch ( coordenada ){
+            case "north":
+            courentRoom = northExit;
+            break;
+            case "east":
+            courentRoom = eastExit;
+            break;
+            case "southeast":
+            courentRoom = southeastExit;
+            break;
+            case "south":
+            courentRoom = southExit;
+            break;
+            case "west":
+            courentRoom = westExit;
+            break;
+
+        }
+        return courentRoom;
+    }
 }
