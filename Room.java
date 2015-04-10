@@ -70,7 +70,7 @@ public class Room
      * @return A description of the room, including exits.
      */
     public String getLongDescription(){
-        String longDescription = "You are " + getDescription()+ "/n" + "Exits: ";
+        String longDescription = "You are " + getDescription()+ "\n" + "Exits: ";
 
         if(northExit != null) 
             longDescription += " north ";
@@ -87,7 +87,7 @@ public class Room
         if(southeastExit != null) 
             longDescription += "southeast ";
 
-        longDescription += "/n";
+        longDescription += "\n";
 
         return longDescription;
     }
@@ -98,25 +98,25 @@ public class Room
      * @return habitacion en la coordenada indicada o null en caso de no existir
      */
     public Room getExit(String coordenada){
-        Room courentRoom = null;
+        Room nextRoom = null;
         switch ( coordenada ){
             case "north":
-            courentRoom = northExit;
+            nextRoom = northExit;
             break;
             case "east":
-            courentRoom = eastExit;
+            nextRoom = eastExit;
             break;
             case "southeast":
-            courentRoom = southeastExit;
+            nextRoom = southeastExit;
             break;
             case "south":
-            courentRoom = southExit;
+            nextRoom = southExit;
             break;
             case "west":
-            courentRoom = westExit;
+            nextRoom = westExit;
             break;
 
         }
-        return courentRoom;
+        return nextRoom;
     }
 }

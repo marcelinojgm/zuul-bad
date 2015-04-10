@@ -176,9 +176,23 @@ public class Game
         }
     }
 
+    /**
+     * imprime la informacion de la habitacion
+     * en la que se encuentra actualmente
+     */
     private void printLocationInfo(){
 
         System.out.print(currentRoom.getLongDescription());
 
+    }
+
+    /**
+     * Return a description of the room's exits.
+     * For example: "Exits: north east west"
+     *
+     * @ return A description of the available exits.
+     */
+    public String getExitString(){
+    return "";
     }
 }
