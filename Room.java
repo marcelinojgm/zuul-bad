@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Class Room - a room in an adventure game.
@@ -78,20 +79,10 @@ public class Room
      */
     public String getExitString(){
         String exit = "";
-        if(nextRoom.containsKey("north")) 
-            exit += " north ";
-
-        if(nextRoom.containsKey("east"))
-            exit +=  " east ";
-
-        if(nextRoom.containsKey("south")) 
-            exit += " south ";
-
-        if(nextRoom.containsKey( "west")) 
-            exit += " west ";
-
-        if(nextRoom.containsKey("southeast")) 
-            exit += "southeast ";
+        Iterator itNextRoom = nextRoom.keySet().iterator();
+        while(itNextRoom.hasNext()){
+            exit += itNextRoom.next() + " ";
+        }
 
         return exit + "\n";
     }
@@ -114,8 +105,8 @@ public class Room
     public void setExit(String direction, Room neighbor)
     {
         if(neighbor == null)
-        nextRoom.remove(direction) ;
+            nextRoom.remove(direction) ;
         else
-        nextRoom.put(direction, neighbor);
+            nextRoom.put(direction, neighbor);
     }
 }
