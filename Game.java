@@ -186,13 +186,6 @@ public class Game
 
     }
 
-    /**
-     * Return a description of the room's exits.
-     * For example: "Exits: north east west"
-     *
-     * @ return A description of the available exits.
-     */
-    public String getExitString(){
-    return "";
+   
     }
-}
+

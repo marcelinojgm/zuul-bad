@@ -71,25 +71,36 @@ public class Room
      */
     public String getLongDescription(){
         String longDescription = "You are " + getDescription()+ "\n" + "Exits: ";
-
-        if(northExit != null) 
-            longDescription += " north ";
-
-        if(eastExit != null) 
-            longDescription +=  " east ";
-
-        if(southExit != null) 
-            longDescription += " south ";
-
-        if(westExit != null) 
-            longDescription += " west ";
-
-        if(southeastExit != null) 
-            longDescription += "southeast ";
-
-        longDescription += "\n";
+        longDescription += getExitString();
 
         return longDescription;
+    }
+
+    /**
+     * Return a description of the room's exits.
+     * For example: "Exits: north east west"
+     *
+     * @ return A description of the available exits.
+     */
+    public String getExitString(){
+        String exit = "";
+        if(northExit != null) 
+            exit += " north ";
+
+        if(eastExit != null) 
+            exit +=  " east ";
+
+        if(southExit != null) 
+            exit += " south ";
+
+        if(westExit != null) 
+            exit += " west ";
+
+        if(southeastExit != null) 
+            exit += "southeast ";
+
+        
+        return exit + "\n";
     }
 
     /**
