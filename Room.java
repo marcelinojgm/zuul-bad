@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Class Room - a room in an adventure game.
  *
@@ -15,11 +17,7 @@
 public class Room 
 {
     private String description;
-    private Room northExit;
-    private Room southExit;
-    private Room eastExit;
-    private Room westExit;
-    private Room southeastExit;
+    private HashMap<String, Room> nextRoom;
 
     /**
      * Create a room described "description". Initially, it has
@@ -30,6 +28,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        this.nextRoom = new HashMap<>();
     }
 
     /**
@@ -43,16 +42,11 @@ public class Room
      */
     public void setExits(Room north, Room east,Room southeast, Room south, Room west) 
     {
-        if(north != null)
-            northExit = north;
-        if(east != null)
-            eastExit = east;
-        if(south != null)
-            southExit = south;
-        if(west != null)
-            westExit = west;
-        if(southeast != null)
-            southeastExit = southeast;
+        nextRoom.put("nort", north);
+        nextRoom.put("east", east);
+        nextRoom.put("southeast", southeast);
+        nextRoom.put("south", south);
+        nextRoom.put("west", west);
     }
 
     /**
@@ -84,22 +78,21 @@ public class Room
      */
     public String getExitString(){
         String exit = "";
-        if(northExit != null) 
+        if(nextRoom.containsKey("north")) 
             exit += " north ";
 
-        if(eastExit != null) 
-            exit +=  " east ";
+        if(nextRoom.containsKey("east"))
+        exit +=  " east ";
 
-        if(southExit != null) 
+        if(nextRoom.containsKey("south")) 
             exit += " south ";
 
-        if(westExit != null) 
+        if(nextRoom.containsKey( "west")) 
             exit += " west ";
 
-        if(southeastExit != null) 
+        if(nextRoom.containsKey("southeast")) 
             exit += "southeast ";
 
-        
         return exit + "\n";
     }
 
@@ -109,25 +102,7 @@ public class Room
      * @return habitacion en la coordenada indicada o null en caso de no existir
      */
     public Room getExit(String coordenada){
-        Room nextRoom = null;
-        switch ( coordenada ){
-            case "north":
-            nextRoom = northExit;
-            break;
-            case "east":
-            nextRoom = eastExit;
-            break;
-            case "southeast":
-            nextRoom = southeastExit;
-            break;
-            case "south":
-            nextRoom = southExit;
-            break;
-            case "west":
-            nextRoom = westExit;
-            break;
 
-        }
-        return nextRoom;
+        return nextRoom.get(coordenada);
     }
 }
