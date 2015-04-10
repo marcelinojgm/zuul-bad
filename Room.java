@@ -52,7 +52,7 @@ public class Room
         if(west != null)
             westExit = west;
         if(southeast != null)
-           southeastExit = southeast;
+            southeastExit = southeast;
     }
 
     /**
@@ -61,6 +61,36 @@ public class Room
     public String getDescription()
     {
         return description;
+    }
+
+    /**
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'
+     *     Exits: north west southwest
+     * @return A description of the room, including exits.
+     */
+    public String getLongDescription(){
+        String longDescription = "You are " + getDescription()+ "/n" + "Exits: ";
+       
+        
+        if(northExit != null) 
+           longDescription += " north ";
+        
+        if(eastExit != null) 
+            longDescription +=  " east ";
+        
+        if(southExit != null) 
+             longDescription += " south ";
+        
+        if(westExit != null) 
+            longDescription += " west ";
+        
+        if(southeastExit != null) 
+             longDescription += "southeast ";
+        
+        longDescription += "/n";
+        
+        return longDescription;
     }
 
 }
