@@ -70,7 +70,7 @@ public class Game
         corredor.setExit("southeast", despacho);
         corredor.setExit( "shouth", laboratorio);
         corredor.setExit("west", salida);
-                
+
         //salida salida
         salida.setExit("east", corredor);
 
@@ -133,28 +133,31 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
-          else if (commandWord.equals("look")) {
+        else if (commandWord.equals("look")) {
             System.out.println(currentRoom.getLongDescription());
         }
-
+        else if(commandWord.equals("eat"))
+        {
+            System.out.println("You have eaten now and you are not hungry any more");
+        }
         return wantToQuit;
     }
 
-//     // implementations of user commands:
-// 
-//     /**
-//      * Print out some help information.
-//      * Here we print some stupid, cryptic message and a list of the 
-//      * command words.
-//      */
-//     private void printHelp() 
-//     {
-//         System.out.println("You are lost. You are alone. You wander");
-//         System.out.println("around at the university.");
-//         System.out.println();
-//         System.out.println("Your command words are:");
-//         System.out.println("   go quit help");
-//     }
+    //     // implementations of user commands:
+    // 
+    //     /**
+    //      * Print out some help information.
+    //      * Here we print some stupid, cryptic message and a list of the 
+    //      * command words.
+    //      */
+    //     private void printHelp() 
+    //     {
+    //         System.out.println("You are lost. You are alone. You wander");
+    //         System.out.println("around at the university.");
+    //         System.out.println();
+    //         System.out.println("Your command words are:");
+    //         System.out.println("   go quit help");
+    //     }
 
     /** 
      * Try to go in one direction. If there is an exit, enter
