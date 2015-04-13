@@ -18,7 +18,10 @@ import java.util.Iterator;
 public class Room 
 {
     private String description;
-    private HashMap<String, Room> nextRoom;
+    private HashMap<String, Room> nextRoom;//<descripcion, objeto habitacion> 
+    // private HashMap<String, Float> item;//<descripcion,peso en kg>
+    private String itemDescrition;
+    private float itemKg;
 
     /**
      * Create a room described "description". Initially, it has
@@ -26,10 +29,13 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description) 
+    public Room(String description,String itemDescrition,float itemKg) 
     {
         this.description = description;
         this.nextRoom = new HashMap<>();
+        this.itemDescrition = itemDescrition;
+        this.itemKg = itemKg;
+
     }
 
     /**
@@ -85,6 +91,14 @@ public class Room
         }
 
         return exit + "\n";
+    }
+    
+    public String getItemDescrition(){
+        return itemDescrition;
+    }
+    
+    public float getItemKg(){
+        return itemKg;
     }
 
     /**

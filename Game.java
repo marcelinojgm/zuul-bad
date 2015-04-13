@@ -36,14 +36,14 @@ public class Game
     {
 
         // create the rooms
-        Room entrada = new Room("entrada");
-        Room pasillo = new Room("pasillo");
-        Room almacen = new Room("almacen");
-        Room laboratorio = new Room("laboratorio");
-        Room despacho = new Room("despacho");
-        Room banio = new Room("baño");
-        Room corredor = new Room("corredor");
-        Room salida = new Room("salida");
+        Room entrada = new Room("entrada","key",0.9F);
+        Room pasillo = new Room("pasillo",null,0);
+        Room almacen = new Room("almacen",null,0);
+        Room laboratorio = new Room("laboratorio",null,0);
+        Room despacho = new Room("despacho",null,0);
+        Room banio = new Room("baño",null,0);
+        Room corredor = new Room("corredor",null,0);
+        Room salida = new Room("salida",null,0);
         // initialise room exits
         //salidas entrada
         entrada.setExit("east", pasillo);
@@ -135,6 +135,9 @@ public class Game
         }
         else if (commandWord.equals("look")) {
             System.out.println(currentRoom.getLongDescription());
+            if(currentRoom.getItemDescrition() != null){
+                System.out.println(currentRoom.getItemDescrition() + "\t"+currentRoom.getItemKg()+" kg");
+            }
         }
         else if(commandWord.equals("eat"))
         {
