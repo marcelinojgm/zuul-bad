@@ -125,7 +125,7 @@ public class Game
 
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help")) {
-            parser.getCommands().showAll();
+            parser.printCommands();
         }
         else if (commandWord.equals("go")) {
             goRoom(command);

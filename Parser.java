@@ -63,12 +63,19 @@ public class Parser
         }
        
     }
-    
     /**
-     * retorna los comandos
-     * @return commands
+     * imprime los comandos disponibles
+     * 
      */
-    public CommandWords getCommands(){
-            return commands;
-        }
+    public void printCommands(){
+        commands.showAll();
+    }
+    
+//     /**
+//      * retorna los comandos
+//      * @return commands
+//      */
+//     public CommandWords getCommands(){
+//             return commands;
+//         }
 }
