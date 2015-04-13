@@ -125,7 +125,7 @@ public class Game
 
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help")) {
-            printHelp();
+            parser.getCommands().showAll();
         }
         else if (commandWord.equals("go")) {
             goRoom(command);
@@ -140,21 +140,21 @@ public class Game
         return wantToQuit;
     }
 
-    // implementations of user commands:
-
-    /**
-     * Print out some help information.
-     * Here we print some stupid, cryptic message and a list of the 
-     * command words.
-     */
-    private void printHelp() 
-    {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        System.out.println("   go quit help");
-    }
+//     // implementations of user commands:
+// 
+//     /**
+//      * Print out some help information.
+//      * Here we print some stupid, cryptic message and a list of the 
+//      * command words.
+//      */
+//     private void printHelp() 
+//     {
+//         System.out.println("You are lost. You are alone. You wander");
+//         System.out.println("around at the university.");
+//         System.out.println();
+//         System.out.println("Your command words are:");
+//         System.out.println("   go quit help");
+//     }
 
     /** 
      * Try to go in one direction. If there is an exit, enter

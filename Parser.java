@@ -61,5 +61,14 @@ public class Parser
         else {
             return new Command(null, word2); 
         }
+       
     }
+    
+    /**
+     * retorna los comandos
+     * @return commands
+     */
+    public CommandWords getCommands(){
+            return commands;
+        }
 }

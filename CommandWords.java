@@ -13,8 +13,8 @@ public class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String[] validCommands = {
-        "go", "quit", "help" , "look"
-    };
+            "go", "quit", "help" , "look"
+        };
 
     /**
      * Constructor - initialise the command words.
@@ -37,5 +37,19 @@ public class CommandWords
         }
         // if we get here, the string was not found in the commands
         return false;
+    }
+
+    /**
+     * Print all valid commands to System.out
+     */
+    public void showAll(){
+        System.out.println("You are lost. You are alone. You wander");
+        System.out.println("around at the university.");
+        System.out.println();
+        System.out.println("Your command words are:");
+        for(int i = 0 ; i < validCommands.length; i++){
+            System.out.print(" " + validCommands[i] + " ");
+        }
+         System.out.print("\n");
     }
 }
