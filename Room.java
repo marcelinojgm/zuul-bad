@@ -35,23 +35,6 @@ public class Room
         this.items= new ArrayList<>();
 
     }
-    /**
-     * Define the exits of this room.  Every direction either leads
-     * to another room or is null (no exit there).
-     * @param north The north exit.
-     * @param east The east exit.
-     * @param southeast The southeast exit.
-     * @param south The south exit.
-     * @param west The west exit.
-     */
-    public void setExits(Room north, Room east,Room southeast, Room south, Room west) 
-    {
-        nextRoom.put("nort", north);
-        nextRoom.put("east", east);
-        nextRoom.put("southeast", southeast);
-        nextRoom.put("south", south);
-        nextRoom.put("west", west);
-    }
 
     /**
      * @return The description of the room.
@@ -65,12 +48,23 @@ public class Room
      * Return a long description of this room, of the form:
      *     You are in the 'name of room'
      *     Exits: north west southwest
+     *     descripcion de los objetos contenidos en 
      * @return A description of the room, including exits.
      */
     public String getLongDescription(){
+        //info actual habitacion
+        //nombre y salidas
         String longDescription = "You are " + getDescription()+ "\n" + "Exits: ";
         longDescription += getExitString();
+        //objetos
+        String  infoItems = infoAllItems();
+        if( infoItems != null){
+            System.out.println(infoItems);
 
+            longDescription += "objeto/s: \n" +
+            " ----------------------------------------- \n";
+            longDescription +=  infoAllItems();
+        }
         return longDescription;
     }
 
@@ -151,9 +145,9 @@ public class Room
     public String infoAllItems(){
         String info = items.size()== 0 ? null : "";
         for(Item objeto : items){
-            info += "descripcion:" + objeto.getDescripcion()+ "   peso: "+  objeto.getPesoKg()  + " kg \n";
+            info += objeto.infoItemn();
         }
-        
+
         return info;
     }
 

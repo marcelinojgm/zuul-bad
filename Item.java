@@ -39,4 +39,13 @@ public class Item
     public float getPesoKg(){
         return pesoKg;
     }
+    
+    /**
+     * informacion del objeto
+     * @return descripcion y peso del objeto
+     * 
+     */
+    public String infoItemn(){
+     return "descripcion:" + descripcion+ "   peso: "+  pesoKg  + " kg \n";
+    }
 }
