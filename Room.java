@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 /**
  * Class Room - a room in an adventure game.
@@ -19,9 +20,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> nextRoom;//<descripcion, objeto habitacion> 
-    // private HashMap<String, Float> item;//<descripcion,peso en kg>
-    private String itemDescrition;
-    private float itemKg;
+    private  ArrayList<Item> items;
 
     /**
      * Create a room described "description". Initially, it has
@@ -29,15 +28,13 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description,String itemDescrition,float itemKg) 
+    public Room(String description) 
     {
         this.description = description;
         this.nextRoom = new HashMap<>();
-        this.itemDescrition = itemDescrition;
-        this.itemKg = itemKg;
+        this.items= new ArrayList<>();
 
     }
-
     /**
      * Define the exits of this room.  Every direction either leads
      * to another room or is null (no exit there).
@@ -92,13 +89,26 @@ public class Room
 
         return exit + "\n";
     }
-    
-    public String getItemDescrition(){
-        return itemDescrition;
+
+    /**
+     * retorna el objeto segun el indice indicado si el indice no es valido retorna null
+     * 
+     * @param index indice delobjeto en la coleccion
+     * @retur descripcion del objato del indice indicado o null si elindice no es valido
+     */
+    public String getItemDescrition(int index){
+        String descripcion = index >= 0 && index <= items.size()?  items.get(index).getDescripcion(): null;
+        return descripcion;
     }
-    
-    public float getItemKg(){
-        return itemKg;
+
+    /**
+     * muestra el peso del objeto en el indice indicado
+     * 
+     * @return peso del objeto del indice indicado, si el indice no es valido retorna -1
+     */
+    public float getItemKg(int index){
+        float peso = index >= 0 && index <= items.size()? items.get(index).getPesoKg():-1;
+        return peso;
     }
 
     /**
@@ -120,4 +130,39 @@ public class Room
     {
         nextRoom.put(direction, neighbor);
     }
+
+    /**
+     * añade un objeto a la habitacion
+     * @param descripcion del objeto
+     * @param peso del objeto en kg
+     * 
+     * 
+     */
+    public void addItem(String descripcion, float peso){
+        items.add(new Item( descripcion,  peso));    
+
+    }
+
+    /**
+     * retorna la informacion de todos los objetos
+     * @return descripcion y peso del objeto si no hay objetos retorna null
+     */
+
+    public String infoAllItems(){
+        String info = items.size()== 0 ? null : "";
+        for(Item objeto : items){
+            info += "descripcion:" + objeto.getDescripcion()+ "   peso: "+  objeto.getPesoKg()  + " kg \n";
+        }
+        
+        return info;
+    }
+
+    /**
+     * retorna el numero de objetos en la habitacion
+     * @return tamño de items
+     */
+    public int numeroItems(){
+        return items.size();
+    }
+
 }
