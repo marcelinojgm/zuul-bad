@@ -1,4 +1,5 @@
 import java.util.Stack;
+
 /**
  * Write a description of class Player here.
  * 
@@ -9,14 +10,22 @@ public class Player
 {
     private Room currentRoom;
     private Stack<Room> ruta;
+
     /**
      * Constructor for objects of class Player
      */
-    public Player(Room startRoom)
+    public Player()
     {
-        currentRoom = startRoom;
+
         ruta = new Stack<>();
 
+    }
+
+    /**
+     * seleciona la habitacion actual
+     */
+    public void setCourentRoom(Room room){
+        currentRoom = room;
     }
 
     /**
@@ -61,8 +70,8 @@ public class Player
      */
     public void back(){
         if(!ruta.empty()){
-           currentRoom = ruta.pop();
-           printLocationInfo();
+            currentRoom = ruta.pop();
+            printLocationInfo();
         }
 
         else{
@@ -87,8 +96,11 @@ public class Player
 
         System.out.println(currentRoom.getLongDescription());
         String infoItems = currentRoom.infoAllItems();
-        if(infoItems != null){
-            System.out.println(infoItems);
-        }
+        
+    }
+
+    public boolean take(){
+        boolean take = false;
+        return take;
     }
 }

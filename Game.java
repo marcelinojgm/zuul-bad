@@ -27,7 +27,10 @@ public class Game
     public Game() 
     {
         player = null;
+        player = new Player();  
         createRooms();
+        
+        // start game outside
         parser = new Parser();
 
     }
@@ -40,6 +43,7 @@ public class Game
 
         // create the rooms
         Room entrada = new Room("entrada");
+        player.setCourentRoom(entrada);
         entrada.addItem("key",0.9F);
         entrada.addItem("linterna",0.5F);
         Room pasillo = new Room("pasillo");
@@ -80,7 +84,6 @@ public class Game
         //salida salida
         salida.setExit("east", corredor);
 
-        player = new Player(entrada);  // start game outside
     }
 
     /**
